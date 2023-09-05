@@ -79,6 +79,7 @@ end
 ```
 The above code implements the design of the `decoder` in the `E-level` of digital circuit design unit. Two signals (`regdst_E` and `regwrite_E`) were used in the above design process. If the `regdst_E` signal is set to `1`, data (used for `addu` instruction) needs to be `read from the register`. If the `regwrite_E` signal is set to `1`, data (computed by `addu` instruction) needs to be `stored` in registers.
 
+
 ```Verilog
 6'b000000:begin
     if(instr_E[5:0]==6'b100001)begin
@@ -93,5 +94,21 @@ The above code implements the design of the `decoder` in the `E-level` of digita
         sb = 0;
 End
 ```
-The above code implements the design of the `decoder` in the `M-level` of digital circuit design unit. A signal (`regwrite_M`) was used in the above design process. If the `regwrite_M` is set to `1`. This means that the calculation result of the `addu` instruction output needs to be stored in a register of the `M` level, which is then passed through the `M` register to the subsequent `W` register.
+The above code implements the design of the `decoder` in the `M-level` of digital circuit design unit. A signal (`regwrite_M`) was used in the above design process. If the `regwrite_M` is set to `1`, this means that the calculation result of the `addu` instruction output needs to be stored in a register of the `M` level, which is then passed through the `M` register to the subsequent `W` register.
 
+
+```Verilog
+6'b000000:begin
+    if(instr_W[5:0]==6'b100001)begin
+        memtoreg_W = 0;
+        regwrite_W = 1;
+        jal_W = 0;
+        jalr_W = 0;
+        bgezal_W = 0;
+        lb_memtoreg_W = 0;
+        bltzal_W = 0;
+        movz_W = 0;
+end
+```
+The above code implements the design of the `decoder` in the `W-level` of digital circuit design unit. A signal (`regwrite_W`) was used in the above design process. If the `regwrite_W` is set to `1`, this
+means that the calculation result of the `addu` instruction output needs to be stored in a register of the `W` level, which is then passed through the `regfile` register for saving computed results.
