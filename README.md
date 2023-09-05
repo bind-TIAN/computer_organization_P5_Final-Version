@@ -48,4 +48,13 @@ endmodule
 ```
 In the above line of code, the initialized register bits are `32bit`, and the maximum number of instructions(`1024`) can be stored. The memory is initialized to `0`, and instructions are loaded from the `.txt` file where the instruction set is stored, and these instructions are stored in this `im` memory.
 
-
+### The design of Register file(regfile) unit
+---
+```Verilog
+initial begin
+    for(i=0;i<32;i=i+1)begin
+        cun[i] = 0;
+    end
+end
+```
+The above code shows the `initialization process` of registers.
