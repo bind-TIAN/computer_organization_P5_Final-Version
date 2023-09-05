@@ -4,4 +4,4 @@
 ## Project explanation
 ---
 
-This project is designed based on a previous project [].
+This project is designed based on a previous project [https://github.com/bind-TIAN/computer_organization_P5_Alpha-Version].
