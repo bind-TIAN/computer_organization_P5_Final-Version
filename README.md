@@ -46,3 +46,6 @@ module im(
 
 endmodule
 ```
+In the above line of code, the initialized register bits are `32bit`, and the maximum number of instructions(`1024`) can be stored. The memory is initialized to `0`, and instructions are loaded from the `.txt` file where the instruction set is stored, and these instructions are stored in this `im` memory.
+
+
