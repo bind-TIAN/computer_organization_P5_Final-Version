@@ -18,4 +18,7 @@ This project is designed based on a previous project [https://github.com/bind-TI
 *    `hush_`: These files contain the design scheme of `pause unit` in digital circuit design.
 *    `im`: Instruction storage unit. This unit loads the instructions from an external `.txt` file and then parses the instructions step by step according to the transition law of the `clock cycle`.
 *    `jicunqi_`: These register files are responsible for storing some "instructions" and "data" and are their staging place. There are many different types of registers divided: `E-level registers`, `M-level registers`, and `W-level registers`.
-*    
+*    `signext`: This file contain the design of `Immediate Number Expansion Unit`.
+*    `zuoyi`: Represents a `shift left` unit in digital circuit design.
+*    `regfile`: The design of the `register` file.
+*    `yimaqi_`: Decode the information in the `instruction set`, and pass the decoded information between the various components in the circuit design.
