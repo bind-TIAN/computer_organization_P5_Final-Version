@@ -58,3 +58,24 @@ initial begin
 end
 ```
 The above code shows the `initialization process` of registers.
+
+### The design of decoder unit.
+---
+```Verilog
+6'b000000:begin
+    if(instr_E[5:0]==6'b100001)begin
+        regdst_E = 1;
+        alusrc_E = 0;
+        aluop = 0;//////////////addu
+        regwrite_E = 1;
+        memtoreg_E = 0;
+        jal_E = 0;
+        jalr_E = 0;
+        bgezal_E = 0;
+        lb_memtoreg_E = 0;
+        bltzal_E = 0;
+        movz_E = 0;
+end
+```
+The above code implements the design of the `decoder` in the digital circuit design unit. Two signals (`regdst_E` and `regwrite_E`) were used in the above design process. If the `regdst_E` signal is set to `1`, data (used for `addu` instruction) needs to be `read from the register`. If the `regwrite_E` signal is set to `1`, data (computed by `addu` instruction) needs to be `stored` in registers.
+
