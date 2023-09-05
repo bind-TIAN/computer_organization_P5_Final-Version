@@ -77,5 +77,21 @@ The above code shows the `initialization process` of registers.
         movz_E = 0;
 end
 ```
-The above code implements the design of the `decoder` in the digital circuit design unit. Two signals (`regdst_E` and `regwrite_E`) were used in the above design process. If the `regdst_E` signal is set to `1`, data (used for `addu` instruction) needs to be `read from the register`. If the `regwrite_E` signal is set to `1`, data (computed by `addu` instruction) needs to be `stored` in registers.
+The above code implements the design of the `decoder` in the `E-level` of digital circuit design unit. Two signals (`regdst_E` and `regwrite_E`) were used in the above design process. If the `regdst_E` signal is set to `1`, data (used for `addu` instruction) needs to be `read from the register`. If the `regwrite_E` signal is set to `1`, data (computed by `addu` instruction) needs to be `stored` in registers.
+
+```Verilog
+6'b000000:begin
+    if(instr_E[5:0]==6'b100001)begin
+        memwrite_M = 0;
+        regwrite_M = 1;
+        memtoreg_M = 0;
+        jal_M = 0;
+        jalr_M = 0;
+        bgezal_M = 0;
+        lb_memtoreg_M = 0;
+        bltzal_M = 0;
+        sb = 0;
+End
+```
+The above code implements the design of the `decoder` in the `M-level` of digital circuit design unit. A signal (`regwrite_M`) was used in the above design process. If the `regwrite_M` is set to `1`. This means that the calculation result of the `addu` instruction output needs to be stored in a register of the `M` level, which is then passed through the `M` register to the subsequent `W` register.
 
