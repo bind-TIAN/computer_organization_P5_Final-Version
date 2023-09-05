@@ -22,3 +22,27 @@ This project is designed based on a previous project [https://github.com/bind-TI
 *    `zuoyi`: Represents a `shift left` unit in digital circuit design.
 *    `regfile`: The design of the `register` file.
 *    `yimaqi_`: Decode the information in the `instruction set`, and pass the decoded information between the various components in the circuit design.
+
+## Design of the core code
+---
+
+### The design of instruction memory(im) unit
+---
+```Verilog
+module im(
+    input [31:0] pc,////
+    output [31:0] code
+    );
+	 reg [31:0] rom [1023:0];
+	 integer i = 0;
+	 initial begin
+		for(i=0;i<1024;i=i+1)begin
+			rom[i] = 0;
+		end
+		$readmemh("code.txt",rom);
+	 end
+	 assign code = rom[pc[11:2]];
+
+
+endmodule
+```
